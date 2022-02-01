@@ -64,7 +64,7 @@ $.get("http://api.openweathermap.org/data/2.5/forecast", {
         let temp = Math.round(data.list[i].main.temp);
         let weather = data.list[i].weather[0].description;
         let weatherIcon = data.list[i].weather[0].icon;
-        console.log(weatherIcon);
+        console.log(weather);
         $(".cardHolder").append(
             "<div class=\"card text-center\">",
                 "<div class=\"card-body\">",
