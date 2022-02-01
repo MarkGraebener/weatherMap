@@ -65,6 +65,15 @@ $.get("http://api.openweathermap.org/data/2.5/forecast", {
         let weather = data.list[i].weather[0].description;
         let weatherIcon = data.list[i].weather[0].icon;
         console.log(weatherIcon);
+        $(".cardHolder").append(
+            "<div class=\"card text-center\">",
+                "<div class=\"card-body\">",
+                    "<h1 class=\"card-title\">" + dateTime + "</h1>",
+                    "<p class=\"card-text\">" + weather + "</p>",
+                    "<p class=\"card-text\">" + temp + "</p>",
+                "</div>",
+            "</div>",
+        )
     }
 
 });
