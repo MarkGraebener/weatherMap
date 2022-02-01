@@ -15,7 +15,7 @@
 /*    box-shadow: ;*/
 /*}*/
 body{
-    /*background: orange;!important;*/
+    /*background-color: orange !important;*/
 }
 .header{
     margin-top: 40px;
@@ -33,4 +33,20 @@ body{
     border-radius: 25px;
     box-shadow: 5px 5px 5px #b4b1b1;
 
+}
+.weatherIcon{
+    /*min-height: 100px!important;*/
+}
+.coordinates {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    padding: 5px 10px;
+    margin: 0;
+    font-size: 11px;
+    line-height: 18px;
+    border-radius: 3px;
+    display: none;
 }
