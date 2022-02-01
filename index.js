@@ -63,15 +63,18 @@ $.get("http://api.openweathermap.org/data/2.5/forecast", {
         let dateTime = data.list[i].dt_txt;
         let temp = Math.round(data.list[i].main.temp);
         let weather = data.list[i].weather[0].description;
+        let date = dateTime.split(" ")
+        console.log(date[0]);
         let weatherIcon = data.list[i].weather[0].icon;
+
         console.log(weather);
         $(".cardHolder").append(
-            "<div class=\"card text-center\">",
-                "<div class=\"card-body\">",
-                    "<h1 class=\"card-title\">" + dateTime + "</h1>",
-                    "<p class=\"card-text\">" + weather + "</p>",
-                    "<p class=\"card-text\">" + temp + "</p>",
-                "</div>",
+            "<div class=\"fiveDayCard card text-center mx-1\">" +
+                "<div class=\"card-body\">" +
+                    "<p class=\"card-title\">" + date[0] + "</p>" +
+                    "<p class=\"card-text\">" + weather + "</p>" +
+                    "<p class=\"card-text\">" + temp + "</p>" +
+                "</div>" +
             "</div>",
         )
     }
