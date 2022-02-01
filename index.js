@@ -85,7 +85,6 @@ let fiveDayCall = () => {
         //setting 5 day forecast in cards
         .done(function (data) {
         $(".cardHolder").html("");// clears cards when func runs
-        // console.log('5 day forecast', data.list[5]);
         for (let i = 5; i < data.list.length; i += 8) {
             let dateTime = data.list[i].dt;
             let newDate = new Date(dateTime * 1000).toLocaleDateString("en",{weekday: "long"});
