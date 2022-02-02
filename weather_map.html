@@ -15,26 +15,35 @@
 </head>
 <body>
 <div class="backgroundGlass">
-    <div class="container">
-        <header class="header d-flex justify-content-center">
-            <h1>Weather Map!</h1>
-        </header>
-        <div class="mapCont d-flex justify-content-center">
-            <div class="" id='map'></div>
+    <div class="content d-flex">
+        <div class="leftPanel ">
+            <div class="cardHeader d-flex justify-content-center my-3">
+                <h3 class="fiveDay">Five Day Forecast</h3>
+            </div>
+            <div class="cardHolder d-flex justify-content-center col"></div>
         </div>
-        <pre id="coordinates" class="coordinates"></pre>
-        <div class="buttons d-flex justify-content-center">
-            <button class="btn mx-1 mt-3" id="zoom5">zoom x 5</button>
-            <button class="btn mx-1 mt-3" id="zoom10">zoom x 10</button>
-            <button class="btn mx-1 mt-3" id="zoom15">zoom x 15</button>
-            <button class="btn mx-1 mt-3" id="geocodeBtn">Go To Geocode</button>
+        <div class="rightPanel">
+            <header class="header d-flex justify-content-center">
+                <h1>Weather Map!</h1>
+                <label for="searchInput">City</label>
+                <input class="search" id="searchInput" type="text">
+            </header>
+            <div class="mapCont d-flex justify-content-center">
+                <div class="" id='map'></div>
+            </div>
+            <pre id="coordinates" class="coordinates"></pre>
+            <div class="buttons d-flex justify-content-center">
+                <button class="btn mx-1 mt-3" id="zoom5">zoom x 5</button>
+                <button class="btn mx-1 mt-3" id="zoom10">zoom x 10</button>
+                <button class="btn mx-1 mt-3" id="zoom15">zoom x 15</button>
+                <button class="btn mx-1 mt-3" id="geocodeBtn">Go To Geocode</button>
+            </div>
         </div>
-        <div class="cardHeader d-flex justify-content-center my-3">
-            <h3 class="fiveDay">Five Day Forecast</h3>
-        </div>
-        <div class="cardHolder d-flex justify-content-between"></div>
+
     </div>
 </div>
+<div class="circle1"></div>
+<div class="circle2"></div>
 
 <!-- The HTML element that serves as the Mapbox container -->
 

@@ -17,13 +17,15 @@ let goToGeocode = () => {
     geocode("600 Navarro St #350, San Antonio, TX 78205", mapboxgl.accessToken).then(function (result) {
         // console.log(result);
         map.setCenter(result);
+        console.log(result);
         map.setZoom(18);
     });
 };
 // console.log(map.get);
 
 
-// markers-----------------
+// MARKERS-----------------
+
 //draggable marker
 const coordinates = document.getElementById('coordinates');
 const draggableMarker = new mapboxgl.Marker({
@@ -32,14 +34,9 @@ const draggableMarker = new mapboxgl.Marker({
     .setLngLat([-98.4916, 29.4252])
     .addTo(map);
 
-// let lat = 0;
-// let long = 0;
-
-
-// let lngLat = 0;
 function onDragEnd() {
     const lngLat = draggableMarker.getLngLat();
-    console.log(lngLat);
+    // console.log(lngLat);
     coordinates.style.display = 'block';
     coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
     let long = lngLat.lng;
@@ -70,7 +67,13 @@ $.get("https://api.openweathermap.org/data/2.5/weather", {
 }).done(function (data) {
     // console.log(data);
 });
-
+//adding geocode search--------------
+// map.addControl(
+//     new MapboxGeocoder({
+//         accessToken: mapBoxKey,
+//         mapboxgl: mapboxgl
+//     })
+// );
 //getting 5 day forecast data------------
 
 let fiveDayCall = () => {
@@ -99,7 +102,7 @@ let fiveDayCall = () => {
             // console.log(weather);
 
             $(".cardHolder").append(
-                "<div class=\"fiveDayCard card text-center mx-1\">" +
+                "<div class=\"fiveDayCard card text-center mx-4 col\">" +
                 "<div class=\"card-body\">" +
                 "<p class=\"card-title\">" + newDate + "</p>" +
                 "<img class=/'weatherIcon/' src='https://openweathermap.org/img/w/" + weatherIcon + ".png' alt=/'weather Icon/'>" +

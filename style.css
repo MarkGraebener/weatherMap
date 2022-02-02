@@ -5,24 +5,72 @@
     border-radius: 25px;
     margin: 0 30px 0 0;
 
-    box-shadow: 10px 10px 5px #b4b1b1;
+    box-shadow:
+            1px 2px 2px hsl(220deg 60% 50% / 0.2),
+            2px 4px 4px hsl(220deg 60% 50% / 0.2),
+            4px 8px 8px hsl(220deg 60% 50% / 0.2),
+            8px 16px 16px hsl(220deg 60% 50% / 0.2),
+            16px 32px 32px hsl(220deg 60% 50% / 0.2);
 }
 .btn{
-    box-shadow: 5px 5px 5px #b4b1b1;
+    box-shadow:
+            1px 2px 2px hsl(220deg 60% 50% / 0.2),
+            2px 4px 4px hsl(220deg 60% 50% / 0.2),
+            4px 8px 8px hsl(220deg 60% 50% / 0.2),
+            8px 16px 16px hsl(220deg 60% 50% / 0.2),
+            16px 32px 32px hsl(220deg 60% 50% / 0.2);
     /*background: orange;!important;*/
 }
-/*html{*/
-/*    background-color: blue;*/
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right top,#65dfc9,#6cdbed);
 
-/*}*/
-/*.backgroundGlass{*/
+}
+.backgroundGlass{
+    background: white;
+    height: 80vh;
+    width: 80%;
+    background: linear-gradient(
+            to right bottom,
+            rgba(255,255,255,0.4),
+            rgba(255,255,255,0.3));
+    border-radius: 25px;
+    z-index: 20;
+    box-shadow:
+            1px 2px 2px hsl(220deg 60% 50% / 0.2),
+            2px 4px 4px hsl(220deg 60% 50% / 0.2),
+            4px 8px 8px hsl(220deg 60% 50% / 0.2),
+            8px 16px 16px hsl(220deg 60% 50% / 0.2),
+            16px 32px 32px hsl(220deg 60% 50% / 0.2);
+    backdrop-filter: blur(1rem);
+}
+.circle1,.circle2{
+    background: white;
+    background: linear-gradient(
+            to right bottom,
+            rgb(124, 124, 224),
+            rgba(255,255,255,0.3));
+    border-radius: 50%;
+    height: 20rem;
+    width: 20rem;
+    position: absolute;
+}
+.circle1{
+  top: 2%;
+    right: 5%;
+}
+.circle2{
+    bottom: 2%;
+    left: 4%;
+}
+/*.content{*/
 /*    min-height: 600px;*/
 /*    min-width: 600px;*/
 /*}*/
-.container{
-    min-height: 600px;
-    min-width: 600px;
-}
 .header{
     margin-top: 40px;
     margin-bottom: 20px;
@@ -31,14 +79,32 @@
     /*background-color: rgba(255, 255, 255, .15);*/
     /*backdrop-filter: blur(5px);*/
 }
+#searchInput{
+    height: 30px;
+}
+.cardHolder{
+
+}
 .cardHeader{
     text-shadow: 2px 2px 5px #b4b1b1;
 
 }
 .fiveDayCard{
     border-radius: 25px;
-    box-shadow: 5px 5px 5px #b4b1b1;
+    box-shadow:
+            1px 2px 2px hsl(220deg 60% 50% / 0.2),
+            2px 4px 4px hsl(220deg 60% 50% / 0.2),
+            4px 8px 8px hsl(220deg 60% 50% / 0.2),
+            8px 16px 16px hsl(220deg 60% 50% / 0.2),
+            16px 32px 32px hsl(220deg 60% 50% / 0.2);
+    background: linear-gradient(
+            to right bottom,
+            rgba(255,255,255,0.3),
+            rgba(255,255,255,0.3))!important ;
+    width: 155px;
 
+    /*margin: 0 10px;*/
+    /*background-color: orange!important;*/
 }
 .weatherIcon{
     /*min-height: 100px!important;*/
