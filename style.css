@@ -1,124 +1,215 @@
-#map {
-    /* the width and height may be set to any size */
-    width: 80%;
-    height: 300px;
-    border-radius: 25px;
-    margin: 0 30px 0 0;
+* {
+    margin: 0;
+    padding: 0;
+}
 
-    box-shadow:
-            1px 2px 2px hsl(220deg 60% 50% / 0.2),
-            2px 4px 4px hsl(220deg 60% 50% / 0.2),
-            4px 8px 8px hsl(220deg 60% 50% / 0.2),
-            8px 16px 16px hsl(220deg 60% 50% / 0.2),
-            16px 32px 32px hsl(220deg 60% 50% / 0.2);
-}
-.btn{
-    box-shadow:
-            1px 2px 2px hsl(220deg 60% 50% / 0.2),
-            2px 4px 4px hsl(220deg 60% 50% / 0.2),
-            4px 8px 8px hsl(220deg 60% 50% / 0.2),
-            8px 16px 16px hsl(220deg 60% 50% / 0.2),
-            16px 32px 32px hsl(220deg 60% 50% / 0.2);
-    /*background: orange;!important;*/
-}
-body{
-    height: 100vh;
+body {
+    /*height: 100vh;*/
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to right top,#65dfc9,#6cdbed);
+    background: linear-gradient(to right top, #65dfc9, #6cdbed);
 
 }
-.backgroundGlass{
+
+.backgroundGlass {
     background: white;
-    height: 80vh;
+    /*height: 80vh;*/
     width: 80%;
+    margin: 80px 0;
     background: linear-gradient(
             to right bottom,
-            rgba(255,255,255,0.4),
-            rgba(255,255,255,0.3));
+            rgba(255, 255, 255, 0.4),
+            rgba(255, 255, 255, 0.3));
     border-radius: 25px;
     z-index: 20;
-    box-shadow:
-            1px 2px 2px hsl(220deg 60% 50% / 0.2),
-            2px 4px 4px hsl(220deg 60% 50% / 0.2),
-            4px 8px 8px hsl(220deg 60% 50% / 0.2),
-            8px 16px 16px hsl(220deg 60% 50% / 0.2),
-            16px 32px 32px hsl(220deg 60% 50% / 0.2);
+    box-shadow: 1px 2px 2px hsl(220deg 60% 50% / 0.2),
+    2px 4px 4px hsl(220deg 60% 50% / 0.2),
+    4px 8px 8px hsl(220deg 60% 50% / 0.2),
+    8px 16px 16px hsl(220deg 60% 50% / 0.2),
+    16px 32px 32px hsl(220deg 60% 50% / 0.2);
     backdrop-filter: blur(1rem);
+
 }
-.circle1,.circle2{
+
+.circle1, .circle2 {
     background: white;
     background: linear-gradient(
             to right bottom,
             rgb(124, 124, 224),
-            rgba(255,255,255,0.3));
+            rgba(255, 255, 255, 0.3));
     border-radius: 50%;
     height: 20rem;
     width: 20rem;
     position: absolute;
 }
-.circle1{
-  top: 2%;
+
+.circle1 {
+    top: 2%;
     right: 5%;
 }
-.circle2{
+
+.circle2 {
     bottom: 2%;
-    left: 4%;
+    left: 9%;
 }
-/*.content{*/
-/*    min-height: 600px;*/
-/*    min-width: 600px;*/
-/*}*/
-.header{
+
+.content {
+    height: 100%;
+    min-width: 600px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
     margin-top: 40px;
     margin-bottom: 20px;
     text-shadow: 2px 2px 5px #b4b1b1;
-    /*background-color: orange;*/
-    /*background-color: rgba(255, 255, 255, .15);*/
-    /*backdrop-filter: blur(5px);*/
-}
-#searchInput{
-    height: 30px;
-}
-.cardHolder{
 
 }
-.cardHeader{
+
+/*left side----------------*/
+.leftPanel {
+    width: 35%;
+    /*height: 100%;*/
+    flex-direction: row;
+    background-color:  rgba(255, 255, 255, 0.7);
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+/*CARDS----------------*/
+.cardHolder {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px 0;
+    /*height: 700px;*/
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: center;
     text-shadow: 2px 2px 5px #b4b1b1;
-
+margin-top: 20px;
 }
-.fiveDayCard{
+
+.card-body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.fiveDayCard {
     border-radius: 25px;
-    box-shadow:
-            1px 2px 2px hsl(220deg 60% 50% / 0.2),
-            2px 4px 4px hsl(220deg 60% 50% / 0.2),
-            4px 8px 8px hsl(220deg 60% 50% / 0.2),
-            8px 16px 16px hsl(220deg 60% 50% / 0.2),
-            16px 32px 32px hsl(220deg 60% 50% / 0.2);
+    box-shadow: 1px 2px 2px hsl(220deg 60% 50% / 0.2),
+    2px 4px 4px hsl(220deg 60% 50% / 0.2),
+    4px 8px 8px hsl(220deg 60% 50% / 0.2),
+    8px 16px 16px hsl(220deg 60% 50% / 0.2),
+    16px 32px 32px hsl(220deg 60% 50% / 0.2);
     background: linear-gradient(
             to right bottom,
-            rgba(255,255,255,0.3),
-            rgba(255,255,255,0.3))!important ;
+            rgba(255, 255, 255, 0.3),
+            rgba(255, 255, 255, 0.3)) !important;
     width: 155px;
+    /*height: 90px;*/
+    padding: 5px;
+    margin: 10px 0;
+    z-index: 21;
 
     /*margin: 0 10px;*/
     /*background-color: orange!important;*/
 }
-.weatherIcon{
+
+.weatherIcon {
     /*min-height: 100px!important;*/
 }
-.coordinates {
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    position: absolute;
-    bottom: 40px;
-    left: 10px;
-    padding: 5px 10px;
-    margin: 0;
-    font-size: 11px;
-    line-height: 18px;
-    border-radius: 3px;
-    display: none;
+
+/*RIGHT SIDE--------------------*/
+.rightPanel {
+    width: 100%;
+    /*display: flex;*/
+    align-items: center;
+    justify-content: center;
+    /*height: 100%;*/
+    /*flex-direction: row;*/
+    /*background-color: white;*/
+    /*border-top--radius: 25px;*/
+    /*border-bottom-left-radius: 25px;*/
 }
+
+#map {
+    /* the width and height may be set to any size */
+    width: 80%;
+    height: 500px;
+    border-radius: 25px;
+    margin: 0 30px 0 0;
+
+    box-shadow: 1px 2px 2px hsl(220deg 60% 50% / 0.2),
+    2px 4px 4px hsl(220deg 60% 50% / 0.2),
+    4px 8px 8px hsl(220deg 60% 50% / 0.2),
+    8px 16px 16px hsl(220deg 60% 50% / 0.2),
+    16px 32px 32px hsl(220deg 60% 50% / 0.2);
+}
+
+.btn {
+    box-shadow: 1px 2px 2px hsl(220deg 60% 50% / 0.2),
+    2px 4px 4px hsl(220deg 60% 50% / 0.2),
+    4px 8px 8px hsl(220deg 60% 50% / 0.2),
+    8px 16px 16px hsl(220deg 60% 50% / 0.2),
+    16px 32px 32px hsl(220deg 60% 50% / 0.2);
+    /*background: orange;!important;*/
+}
+
+.searchCont {
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    margin-top: 30px;
+}
+
+.searchBar {
+    color: black;
+    /*margin-top: 30px;*/
+    /*height: 30px;*/
+    background-color: transparent;
+    border: #3ad7ee;
+    box-shadow: 1px 2px 2px hsl(220deg 60% 50% / 0.2),
+    2px 4px 4px hsl(220deg 60% 50% / 0.2),
+    4px 8px 8px hsl(220deg 60% 50% / 0.2),
+    8px 16px 16px hsl(220deg 60% 50% / 0.2),
+    16px 32px 32px hsl(220deg 60% 50% / 0.2);
+}
+#geocodeBtn{
+    height: 30px;
+    margin-top: 30px;
+}
+.popUp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.mapboxgl-popup-content{
+    border-radius: 15px;
+    background: linear-gradient(
+            to right bottom,
+            rgba(255, 255, 255, 0.6),
+            rgba(255, 255, 255, 0.6))
+}
+
+/*LAT & LONG DISPLAY*/
+/*.coordinates {*/
+/*    background: rgba(0, 0, 0, 0.5);*/
+/*    color: #fff;*/
+/*    position: absolute;*/
+/*    bottom: 40px;*/
+/*    left: 10px;*/
+/*    padding: 5px 10px;*/
+/*    margin: 0;*/
+/*    font-size: 11px;*/
+/*    line-height: 18px;*/
+/*    border-radius: 3px;*/
+/*    display: none;*/
+/*}*/

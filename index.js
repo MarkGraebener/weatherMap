@@ -1,8 +1,5 @@
 "use strict"
 
-// import {mapBoxKey} from "/tokens.js"
-
-
 //creating map from map box--------------
 mapboxgl.accessToken = mapBoxKey;
 var map = new mapboxgl.Map({
@@ -12,39 +9,36 @@ var map = new mapboxgl.Map({
     center: [-98.4916, 29.4252]
 })
 
-// the  geocode method from mapbox-geocoder-utils.js
-let goToGeocode = () => {
-    geocode("600 Navarro St #350, San Antonio, TX 78205", mapboxgl.accessToken).then(function (result) {
-        // console.log(result);
-        map.setCenter(result);
-        console.log(result);
-        map.setZoom(18);
-    });
-};
-// console.log(map.get);
-
-
 // MARKERS-----------------
 
 //draggable marker
-const coordinates = document.getElementById('coordinates');
-const draggableMarker = new mapboxgl.Marker({
+// const coordinates = document.getElementById('coordinates');
+let draggableMarker = new mapboxgl.Marker({
     draggable: true
 })
     .setLngLat([-98.4916, 29.4252])
     .addTo(map);
 
+function addMarker  (geolat, geolong) {
+    // console.log(geolat);
+    // console.log(geolong);
+    draggableMarker
+        .setLngLat([geolat, geolong])
+        .addTo(map);
+    onDragEnd();
+}
+
 function onDragEnd() {
     const lngLat = draggableMarker.getLngLat();
     // console.log(lngLat);
-    coordinates.style.display = 'block';
-    coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
+    // coordinates.style.display = 'block';
+    // coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
     let long = lngLat.lng;
     let lat = lngLat.lat;
     // console.log(typeof long);
     $.get(`https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=${lat}&lon=${long}&appid=${weatherMapKey}`)
         .done(function (data) {
-            console.log(data);
+            // console.log(data);
             fiveDayCall();
         })
 }
@@ -87,28 +81,39 @@ let fiveDayCall = () => {
     })
         //setting 5 day forecast in cards
         .done(function (data) {
+            console.log(data);
+            //setting current weather in popup---------
+            let alamoPopup = new mapboxgl.Popup()
+                .setHTML(
+                    "<div class='popUp'>" +
+                    "<h5> Current Weather </h5>" +
+                    "<p>" + data.city.name + "</p>" +
+                    "<img class=/'weatherIcon/' src='https://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png' alt=/'weather Icon/'>" +
+                    "<p>" + data.list[0].weather[0].main + "</p>" +
+                    "<p>" + Math.round(data.list[0].main.temp) + "°F" + "</p>" +
+                    "</div>")
+
+            draggableMarker.setPopup(alamoPopup)
+
         $(".cardHolder").html("");// clears cards when func runs
+
+        //    iterating through forecast weather data---------
         for (let i = 5; i < data.list.length; i += 8) {
             let dateTime = data.list[i].dt;
             let newDate = new Date(dateTime * 1000).toLocaleDateString("en",{weekday: "long"});
-            // let date = dateTime.split(" ")
             // console.log(dateTime);
             let temp = Math.round(data.list[i].main.temp);
             let weather = data.list[i].weather[0].description;
-
-            // console.log(newDate);
             let weatherIcon = data.list[i].weather[0].icon;
 
-            // console.log(weather);
-
             $(".cardHolder").append(
-                "<div class=\"fiveDayCard card text-center mx-4 col\">" +
-                "<div class=\"card-body\">" +
-                "<p class=\"card-title\">" + newDate + "</p>" +
+                "<div class=\"fiveDayCard text-center\">" +
+                // "<div class=\"card-body\">" +
+                "<div class=\"\">" + newDate + "</div>" +
                 "<img class=/'weatherIcon/' src='https://openweathermap.org/img/w/" + weatherIcon + ".png' alt=/'weather Icon/'>" +
-                "<p class=\"card-text\">" + weather + "</p>" +
-                "<p class=\"card-text\">" + temp + "°F" + "</p>" +
-                "</div>" +
+                "<div class=\"\">" + weather + "</d>" +
+                "<div class=\"\">" + temp + "°F" + "</d>" +
+                // "</div>" +
                 "</div>"
             )
         }
@@ -116,18 +121,38 @@ let fiveDayCall = () => {
     });
 }
 
+// the  geocode method from mapbox-geocoder-utils.js
+let goToGeocode = (city) => {
+    geocode(city, mapboxgl.accessToken).then(function (result) {
+        // console.log(result);
+        map.setCenter(result);
+        // console.log(result[0], result[1]);
+        map.setZoom(7);
+        addMarker(result[0], result[1]);
+    });
+};
+$("#searchBtn").on("click",(e) => {
+
+    e.preventDefault();
+    let city = $("#searchInput").val();
+    goToGeocode(city);
+    $("#searchInput").val("");
+
+});
 // button events
-$('#geocodeBtn').click(function (e) {
-    goToGeocode();
-})
+
+// $('#geocodeBtn').click(function (e) {
+//     goToGeocode();
+// })
 $('#zoom5').click(function (e) {
-    map.flyTo({zoom: 5})
+    map.flyTo({zoom: 5, center: [lat, long]})
+    console.log(lat, long);
 });
 $('#zoom10').click(function (e) {
-    map.flyTo({zoom: 10})
+    map.flyTo({zoom: 10, center: [lat, long]})
 });
 $('#zoom15').click(function (e) {
-    map.flyTo({zoom: 15});
+    map.flyTo({zoom: 15, center: [lat, long]})
 })
 
     (fiveDayCall()) // initializes on doc load
