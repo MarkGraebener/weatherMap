@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
 }
-
+/*BACKGROUND----------------------*/
 body {
     /*height: 100vh;*/
     width: 100vw;
@@ -12,27 +12,6 @@ body {
     background: linear-gradient(to right top, #65dfc9, #6cdbed);
 
 }
-
-.backgroundGlass {
-    background: white;
-    /*height: 80vh;*/
-    width: 80%;
-    margin: 80px 0;
-    background: linear-gradient(
-            to right bottom,
-            rgba(255, 255, 255, 0.4),
-            rgba(255, 255, 255, 0.3));
-    border-radius: 25px;
-    z-index: 20;
-    box-shadow: 1px 2px 2px hsl(220deg 60% 50% / 0.2),
-    2px 4px 4px hsl(220deg 60% 50% / 0.2),
-    4px 8px 8px hsl(220deg 60% 50% / 0.2),
-    8px 16px 16px hsl(220deg 60% 50% / 0.2),
-    16px 32px 32px hsl(220deg 60% 50% / 0.2);
-    backdrop-filter: blur(1rem);
-
-}
-
 .circle1, .circle2 {
     background: white;
     background: linear-gradient(
@@ -54,6 +33,29 @@ body {
     bottom: 2%;
     left: 9%;
 }
+
+/*GLASS PANEL-----------*/
+.backgroundGlass {
+    background: white;
+    /*height: 80vh;*/
+    width: 80%;
+    margin: 80px 0;
+    background: linear-gradient(
+            to right bottom,
+            rgba(255, 255, 255, 0.4),
+            rgba(255, 255, 255, 0.3));
+    border-radius: 25px;
+    z-index: 20;
+    box-shadow: 1px 2px 2px hsl(220deg 60% 50% / 0.2),
+    2px 4px 4px hsl(220deg 60% 50% / 0.2),
+    4px 8px 8px hsl(220deg 60% 50% / 0.2),
+    8px 16px 16px hsl(220deg 60% 50% / 0.2),
+    16px 32px 32px hsl(220deg 60% 50% / 0.2);
+    backdrop-filter: blur(1rem);
+
+}
+
+
 
 .content {
     height: 100%;

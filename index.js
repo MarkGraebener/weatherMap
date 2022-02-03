@@ -5,7 +5,7 @@ mapboxgl.accessToken = mapBoxKey;
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v9',
-    zoom: 1,
+    zoom: 3,
     center: [-98.4916, 29.4252]
 })
 
@@ -68,6 +68,8 @@ $.get("https://api.openweathermap.org/data/2.5/weather", {
 //         mapboxgl: mapboxgl
 //     })
 // );
+
+
 //getting 5 day forecast data------------
 
 let fiveDayCall = () => {
@@ -105,7 +107,7 @@ let fiveDayCall = () => {
             let temp = Math.round(data.list[i].main.temp);
             let weather = data.list[i].weather[0].description;
             let weatherIcon = data.list[i].weather[0].icon;
-
+            //CREATING CARDS---------------------
             $(".cardHolder").append(
                 "<div class=\"fiveDayCard text-center\">" +
                 // "<div class=\"card-body\">" +
@@ -131,6 +133,7 @@ let goToGeocode = (city) => {
         addMarker(result[0], result[1]);
     });
 };
+//SEARCH BUTTON --------------
 $("#searchBtn").on("click",(e) => {
 
     e.preventDefault();
