@@ -19,7 +19,7 @@ let draggableMarker = new mapboxgl.Marker({
     .setLngLat([-98.4916, 29.4252])
     .addTo(map);
 
-function addMarker  (geolat, geolong) {
+function addMarker(geolat, geolong) {
     // console.log(geolat);
     // console.log(geolong);
     draggableMarker
@@ -30,9 +30,6 @@ function addMarker  (geolat, geolong) {
 
 function onDragEnd() {
     const lngLat = draggableMarker.getLngLat();
-    // console.log(lngLat);
-    // coordinates.style.display = 'block';
-    // coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
     let long = lngLat.lng;
     let lat = lngLat.lat;
     // console.log(typeof long);
@@ -45,14 +42,6 @@ function onDragEnd() {
 
 draggableMarker.on('dragend', onDragEnd);
 
-// var perrysMarker = new mapboxgl.Marker()
-//     .setLngLat([ -98.610928, 29.593225])
-//     .addTo(map);
-//
-// var alamoPopup = new mapboxgl.Popup()
-//     .setHTML("<p>Fridays lunch 1/2 off the best porkchop!</p>")
-//
-// perrysMarker.setPopup(alamoPopup)
 
 //getting current weather data-------------
 $.get("https://api.openweathermap.org/data/2.5/weather", {
@@ -83,7 +72,7 @@ let fiveDayCall = () => {
     })
         //setting 5 day forecast in cards
         .done(function (data) {
-            console.log(data);
+            // console.log(data);
             //setting current weather in popup---------
             let alamoPopup = new mapboxgl.Popup()
                 .setHTML(
@@ -97,30 +86,30 @@ let fiveDayCall = () => {
 
             draggableMarker.setPopup(alamoPopup)
 
-        $(".cardHolder").html("");// clears cards when func runs
+            $(".cardHolder").html("");// clears cards when func runs
 
-        //    iterating through forecast weather data---------
-        for (let i = 5; i < data.list.length; i += 8) {
-            let dateTime = data.list[i].dt;
-            let newDate = new Date(dateTime * 1000).toLocaleDateString("en",{weekday: "long"});
-            // console.log(dateTime);
-            let temp = Math.round(data.list[i].main.temp);
-            let weather = data.list[i].weather[0].description;
-            let weatherIcon = data.list[i].weather[0].icon;
-            //CREATING CARDS---------------------
-            $(".cardHolder").append(
-                "<div class=\"fiveDayCard text-center\">" +
-                // "<div class=\"card-body\">" +
-                "<div class=\"\">" + newDate + "</div>" +
-                "<img class=/'weatherIcon/' src='https://openweathermap.org/img/w/" + weatherIcon + ".png' alt=/'weather Icon/'>" +
-                "<div class=\"\">" + weather + "</d>" +
-                "<div class=\"\">" + temp + "°F" + "</d>" +
-                // "</div>" +
-                "</div>"
-            )
-        }
+            //    iterating through forecast weather data---------
+            for (let i = 5; i < data.list.length; i += 8) {
+                let dateTime = data.list[i].dt;
+                let newDate = new Date(dateTime * 1000).toLocaleDateString("en", {weekday: "long"});
+                // console.log(dateTime);
+                let temp = Math.round(data.list[i].main.temp);
+                let weather = data.list[i].weather[0].description;
+                let weatherIcon = data.list[i].weather[0].icon;
+                //CREATING CARDS---------------------
+                $(".cardHolder").append(
+                    "<div class=\"fiveDayCard text-center\">" +
+                    // "<div class=\"card-body\">" +
+                    "<div class=\"\">" + newDate + "</div>" +
+                    "<img class=/'weatherIcon/' src='https://openweathermap.org/img/w/" + weatherIcon + ".png' alt=/'weather Icon/'>" +
+                    "<div class=\"\">" + weather + "</d>" +
+                    "<div class=\"\">" + temp + "°F" + "</d>" +
+                    // "</div>" +
+                    "</div>"
+                )
+            }
 
-    });
+        });
 }
 
 // the  geocode method from mapbox-geocoder-utils.js
@@ -133,8 +122,19 @@ let goToGeocode = (city) => {
         addMarker(result[0], result[1]);
     });
 };
+
+//DOUBLE CLICK ON MAP TO MOVE THE MARKER AND RE POPULATE DATA-----------
+map.on("dblclick", (e) => {
+    // console.log(e);
+    e.preventDefault();
+    reverseGeocode({lng: e.lngLat.lng, lat: e.lngLat.lat}, mapboxgl.accessToken).then(function (results) {
+        // logs the address for The Alamo
+        // console.log(results);
+        goToGeocode(results);
+    })
+})
 //SEARCH BUTTON --------------
-$("#searchBtn").on("click",(e) => {
+$("#searchBtn").on("click", (e) => {
 
     e.preventDefault();
     let city = $("#searchInput").val();
@@ -148,8 +148,8 @@ $("#searchBtn").on("click",(e) => {
 //     goToGeocode();
 // })
 $('#zoom5').click(function (e) {
-    map.flyTo({zoom: 5, center: [lat, long]})
-    console.log(lat, long);
+    map.flyTo({zoom: 5})
+    console.log(e);
 });
 $('#zoom10').click(function (e) {
     map.flyTo({zoom: 10, center: [lat, long]})
@@ -158,4 +158,4 @@ $('#zoom15').click(function (e) {
     map.flyTo({zoom: 15, center: [lat, long]})
 })
 
-    (fiveDayCall()) // initializes on doc load
+(fiveDayCall()) // initializes on doc load
