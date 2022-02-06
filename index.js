@@ -123,10 +123,15 @@ let goToGeocode = (city) => {
     });
 };
 
+// let lat = 0;
+// let long = 0;
 //DOUBLE CLICK ON MAP TO MOVE THE MARKER AND RE POPULATE DATA-----------
 map.on("dblclick", (e) => {
     // console.log(e);
     e.preventDefault();
+    // lat = e.lngLat.lat;
+    // long = e.lngLat.lng;
+    // console.log(lat, long);
     reverseGeocode({lng: e.lngLat.lng, lat: e.lngLat.lat}, mapboxgl.accessToken).then(function (results) {
         // logs the address for The Alamo
         // console.log(results);
@@ -155,7 +160,7 @@ $('#zoom10').click(function (e) {
     map.flyTo({zoom: 10, center: [lat, long]})
 });
 $('#zoom15').click(function (e) {
-    map.flyTo({zoom: 15, center: [lat, long]})
+    map.flyTo({zoom: 15, center: [long, lat]})
 })
 
 (fiveDayCall()) // initializes on doc load
