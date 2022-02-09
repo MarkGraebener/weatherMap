@@ -10,6 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     background: linear-gradient(to right top, #65dfc9, #6cdbed);
+    overflow: hidden;
 
 }
 .circle1, .circle2 {

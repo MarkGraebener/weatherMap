@@ -153,14 +153,17 @@ $("#searchBtn").on("click", (e) => {
 //     goToGeocode();
 // })
 $('#zoom5').click(function (e) {
-    map.flyTo({zoom: 5})
-    console.log(e);
+    map.flyTo({zoom: 3})
+    // console.log(e);
 });
 $('#zoom10').click(function (e) {
-    map.flyTo({zoom: 10, center: [lat, long]})
+    map.flyTo({zoom: 5.5})
 });
 $('#zoom15').click(function (e) {
-    map.flyTo({zoom: 15, center: [long, lat]})
+    map.flyTo({zoom: 9.5})
+})
+$('#zoom20').click(function (e) {
+    map.flyTo({zoom: 15})
 })
 
 (fiveDayCall()) // initializes on doc load
