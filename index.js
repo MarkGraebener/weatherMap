@@ -93,11 +93,11 @@ let fiveDayCall = () => {
                 let dateTime = data.list[i].dt;
                 let newDate = new Date(dateTime * 1000).toLocaleDateString("en", {weekday: "long"});
                 // console.log(data.list[i])
-                let tempMax = Math.round(data.list[i].main.temp_max);
+                let tempMax = Math.round(data.list[i].main.temp);
                 let tempMin = Math.round(data.list[i-4].main.temp_min);
                 console.log(data);
-                console.log(data.list[i-4].main.temp_min);
-                console.log(data.list[0].main.temp_max);
+                console.log(data.list[i-4].main.temp);
+                console.log(data.list[i].main.temp_max);
                 let weather = data.list[i].weather[0].description;
                 let weatherIcon = data.list[i].weather[0].icon;
 
@@ -109,7 +109,8 @@ let fiveDayCall = () => {
                     "<div class=\"\">" + newDate + "</div>" +
                     "<img class=/'weatherIcon/' src='https://openweathermap.org/img/w/" + weatherIcon + ".png' alt=/'weather Icon/'>" +
                     "<div class=\"\">" + weather + "</d>" +
-                    "<div class=\"temps\">" + "Max: "+ tempMax + "°F "+ "Min: " + tempMin+ "°F" + "</d>" +
+                    // "<div class=\"temps\">" + "Max: "+ tempMax + "°F "+ "Min: " + tempMin+ "°F" + "</d>" +
+                    "<div class=\"temp\">" + tempMax + "°F " + "</d>" +
                     // "</div>" +
                     "</div>"
                 )
