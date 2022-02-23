@@ -124,7 +124,9 @@ margin-top: 20px;
     /*margin: 0 10px;*/
     /*background-color: orange!important;*/
 }
-
+.temps{
+    font-size: 10px;
+}
 .weatherIcon {
     /*min-height: 100px!important;*/
 }
